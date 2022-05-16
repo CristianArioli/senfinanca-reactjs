@@ -11,12 +11,12 @@ export function TransactionsProvider({ children }) {
     setTransactions(recoverAllTransactions());
   }, []);
 
-  function retornaUltimoId() {
+  function returnLastID() {
     return transactions.at(-1)?.id;
   }
 
   function createTransaction(id, title, category, type, value) {
-    const addId = retornaUltimoId() ? retornaUltimoId() + 1 : 1;
+    const addId = returnLastID() ? returnLastID() + 1 : 1;
 
     const objetoForm = {
       id: id ? parseInt(id) : addId,
