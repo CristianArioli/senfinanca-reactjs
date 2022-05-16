@@ -11,7 +11,7 @@ export function ModalTransactions({ isOpen, onRequestClose, id }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    
+
     createTransaction(
       id,
       e.target.title?.value,
@@ -69,13 +69,15 @@ export function ModalTransactions({ isOpen, onRequestClose, id }) {
           required
         />
         <label htmlFor="type">Tipo</label>
-        <select id="type" defaultValue={valoresInputId?.type === 'entrada' ? 'entrada' : 'saida'}>
-          <option value="entrada">
-            Entrada
-          </option>
-          <option value="saida">
-            Saída
-          </option>
+        <select
+          id="type"
+          value={valoresInputId?.type === "entrada" ? "entrada" : "saida"}
+          onChange={(event) =>
+            setValoresInputId({ ...valoresInputId, type: event.target.value })
+          }
+        >
+          <option value="entrada">Entrada</option>
+          <option value="saida">Saída</option>
         </select>
         <label htmlFor="value">Valor</label>
         <input
